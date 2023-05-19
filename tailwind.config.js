@@ -10,6 +10,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      white: '#ffffff',
       blue: {
         light: '#6B4EE6',
         dark: '#0C4DCB',
@@ -18,6 +19,7 @@ module.exports = {
         light: '#E1DCFA',
         DEFAULT: '#BEB0F2',
         dark: '#ED6C6C',
+        darkLight: '#F19090',
       },
       gray: {
         darkvar1: '#131313',
@@ -26,6 +28,7 @@ module.exports = {
         DEFAULT: '#000000',
         light: '#D9D9D9',
         lightest: '#9A9A9A',
+        verylight: '#F2F8FF',
       }
     },
   },

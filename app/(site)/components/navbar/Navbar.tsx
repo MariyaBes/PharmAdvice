@@ -3,6 +3,8 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Menu from "./Menu";
 import Notification from "./Notification";
+import Link from "next/link";
+
 
 const Navbar = () => {
     return (
@@ -17,7 +19,9 @@ const Navbar = () => {
                         <Logo/>
                         <Menu/>
                         <Notification/>
-                        <Avatar/>
+                        <Link href='/reg'><Avatar/>
+                        </Link>
+                        
                     </div>
         
                 </Container>

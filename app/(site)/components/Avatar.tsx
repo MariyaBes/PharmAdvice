@@ -13,6 +13,7 @@ const Avatar = () => {
                 src="/images/usersquare.svg"
             />
         </div>
+        
     );
 }
 

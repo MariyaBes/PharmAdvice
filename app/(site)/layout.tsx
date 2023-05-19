@@ -1,4 +1,4 @@
-import './globals.css'
+import '../globals.css'
 import { Prompt } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
 
@@ -18,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        {children}</body>
+        {children}
+        
+        </body>
     </html>
   )
 }
