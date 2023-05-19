@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
             onClick={onClick}
             type={type}
             disabled={disabled}
-            className={clsx(` p-4 text-white text-sm font-bold tracking-[3px] rounded-xl mt-5 mb-2 w-[305px] shadow-md`,
+            className={clsx(` p-4 text-white text-sm font-bold tracking-[3px] rounded-xl mt-2 mb-2 w-[305px] shadow-md`,
             disabled && 'opacity-50 cursor-default',
             fullWidth && 'w-full',
             secondary ? 'text-gray-900' : 'text-white',

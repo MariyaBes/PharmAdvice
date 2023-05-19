@@ -8,6 +8,7 @@ import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
 import Image from 'next/image';
 import AuthSocialButton from "./AuthSocialButton";
+import Checkbox from "@/app/components/Checkbox";
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -58,7 +59,7 @@ const AuthForm = () => {
 
                 <div className='mb-6'>
                     <h1 className='flex text-xl font-bold font-["Lato"] tracking-wide mb-1 p-1 pt-12 w-[315px] ml-1'>
-                        Авторизация в 
+                        {variant === 'LOGIN' ? 'Авторизация' : 'Регистрация'} в 
                         <p className="border-b-2 border-blue-light uppercase ml-[6px] font-semibold font-['Prompt']">PharmAdvice</p> 
                     </h1>
                     <p className="mt-2 ml-2 font-light text-[13px] font-['Lato'] w-[305px]">Сервис для онлайн-консультаций с фармацевтом</p>
@@ -72,6 +73,7 @@ const AuthForm = () => {
                             placeholder = 'Имя'
                             register={register} 
                             errors={errors} 
+                            disabled={isLoading}
                         />
                     )}
                     <Input
@@ -80,6 +82,7 @@ const AuthForm = () => {
                         placeholder = 'Email'
                         register={register}
                         errors={errors}
+                        disabled={isLoading}
                     />
                     <Input
                         id="password"
@@ -87,7 +90,12 @@ const AuthForm = () => {
                         placeholder = 'Пароль'
                         register={register}
                         errors={errors}
+                        disabled={isLoading}
                     />
+
+                    <Checkbox>
+                        {variant === 'LOGIN' ? 'Запомнить меня' : 'Согласен с условиями использования сервиса PharmAdvice и обработки персональных данных'}
+                    </Checkbox>
 
                     <Button disabled={isLoading} type='submit'>
                         {variant === 'LOGIN' ? 'Войти' : 'Регистрация'}

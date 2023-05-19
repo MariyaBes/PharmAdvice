@@ -15,9 +15,7 @@ export default function Home() {
         />
 
         <div className='grid ml-[19px]'>
-          <Link href={'/reg'}>
-            <p className='text-[64px] font-bold tracking-wider'>PHARMADVICE</p>
-          </Link>
+          <p className='text-[64px] font-bold tracking-wider'>PHARMADVICE</p>
           
           <h1 className='font-semibold text-[22px] antialiased tracking-[0.11rem]'>Упрощаем взаимодействие с аптекой</h1>
 
