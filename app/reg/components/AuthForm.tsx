@@ -9,6 +9,7 @@ import Button from "@/app/components/Button";
 import Image from 'next/image';
 import AuthSocialButton from "./AuthSocialButton";
 import Checkbox from "@/app/components/Checkbox";
+import axios from 'axios';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
@@ -42,7 +43,7 @@ const AuthForm = () => {
         setIsLoading(true);
 
         if(variant === 'REGISTER') {
-            //
+            axios.post('/api/register', data)
         }
         if (variant === 'LOGIN') {
             ///
