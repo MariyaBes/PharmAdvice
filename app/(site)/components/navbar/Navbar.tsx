@@ -5,10 +5,9 @@ import Menu from "./Menu";
 import Notification from "./Notification";
 import Link from "next/link";
 
-
 const Navbar = () => {
     return (
-        <div className="fixed w-full bg-white z-15 shadow-sm">
+        <div className="fixed w-full bg-white z-15 shadow-sm navbar">
             <div className="flex py-[4.5px] border-gray-lightest border-b-[1px] border-opacity-30">
                 <p className="text-[11px] xl:px-[365px] md:px-10 sm:px-2 font-normal font-['Lato']">Местоположение: Республика Крым</p>
             </div>
@@ -19,7 +18,8 @@ const Navbar = () => {
                         <Logo/>
                         <Menu/>
                         <Notification/>
-                        <Link href='/reg'><Avatar/>
+                        <Link href='/reg'>
+                            <Avatar/>
                         </Link>
                         
                     </div>
