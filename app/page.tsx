@@ -147,7 +147,7 @@ export default function Home() {
 
         <div className='flex flex-row m-auto'>
 
-          <div className='flex flex-col mt-[38px] mr-[58px]'>
+          <div className='flex flex-col mt-[38px] mr-[58px] mb-[69px]'>
               <Image
                 alt='anal'
                 className='flex m-auto'
@@ -186,7 +186,8 @@ export default function Home() {
           </div>
         
       </div>
-     
+
     </div>
+    
   );
 }

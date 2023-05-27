@@ -1,6 +1,7 @@
-import '../globals.css'
+import './globals.css'
 import { Prompt } from 'next/font/google'
 import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 
 const inter = Prompt({ subsets: ['latin'], weight: ['600', '700'] })
 
@@ -19,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
-        
+        <Footer />
         </body>
     </html>
   )

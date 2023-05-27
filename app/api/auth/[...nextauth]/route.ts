@@ -18,26 +18,31 @@ export const authOptions: AuthOptions = {
       name: 'credentials',
       credentials: {
         email: { label: 'email', type: 'text' },
-        password: { label: 'password', type: 'password' }
+        password: { label: 'password', type: 'password' },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
           throw new Error('Invalid credentials');
         }
-
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email
           }
         });
 
-        if (!user || !user?.hashedPassword) {
+        const pharmacist = await prisma.pharmacist.findUnique({
+          where:{
+            email: credentials.email
+          }
+        });
+
+        if ((!user || !user?.hashedPassword) || (!pharmacist || !pharmacist?.hashedPassword) ) {
           throw new Error('Invalid credentials');
         }
 
         const isCorrectPassword = await bcrypt.compare(
           credentials.password,
-          user.hashedPassword
+          user.hashedPassword,
         );
 
         if (!isCorrectPassword) {

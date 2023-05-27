@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ADMIN
+  USER
+  PHARMACIST
+}
+
 model User {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   name            String?
@@ -17,8 +23,12 @@ model User {
   emailVerified   DateTime?
   image           String?
   hashedPassword  String?
+  age             Int?
+  sex             String?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  role UserRole @default(USER)
 
   conversationIds String[] @db.ObjectId
   conversations Conversation[] @relation(fields: [conversationIds], references: [id])
@@ -27,6 +37,32 @@ model User {
   seenMessages Message[] @relation("Seen", fields: [seenMessageIds], references: [id])
 
   accounts Account[]
+  messages Message[]
+}
+
+model Pharmacist {
+  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  pharmacy        String?
+  raiting         Int?
+  contact         String?
+  gender          String?
+  qualificarion   String?
+  hashedPassword  String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  role UserRole @default(PHARMACIST)
+
+  conversationIds String[] @db.ObjectId
+  conversations Conversation[] @relation(fields: [conversationIds], references: [id])
+  
+  seenMessageIds String[] @db.ObjectId
+  seenMessages Message[] @relation("Seen", fields: [seenMessageIds], references: [id])
+
   messages Message[]
 }
 
@@ -60,7 +96,10 @@ model Conversation {
   messages Message[]
 
   userIds String[] @db.ObjectId
-  users User[] @relation(fields: [userIds], references: [id])
+  users User[] @relation(fields: [pharmacistIds], references: [id])
+
+  pharmacistIds String[] @db.ObjectId
+  pharmacists Pharmacist[] @relation(fields: [userIds], references: [id])
 }
 
 model Message {
@@ -71,11 +110,14 @@ model Message {
 
   seenIds String[] @db.ObjectId
   seen User[] @relation("Seen", fields: [seenIds], references: [id])
+  seenpharm Pharmacist[] @relation("Seen", fields: [seenIds], references: [id])
 
   conversationId String @db.ObjectId
   conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
   
   senderId String @db.ObjectId
+  phamrsenderId String @db.ObjectId
   sender User @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  senderpharm Pharmacist @relation(fields: [phamrsenderId], references: [id], onDelete: Cascade)
 }
 

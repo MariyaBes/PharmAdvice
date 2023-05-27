@@ -11,3 +11,7 @@ body,
 .navbar {
   z-index: 1000;
 }
+
+.index {
+  z-index: 1000;
+}
